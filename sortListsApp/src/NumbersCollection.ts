@@ -1,9 +1,13 @@
+import {Sorter} from "./Sorter";
+
 const charVal = (char: string) => char.charCodeAt(0)
 const lowerCharVal = (char: string) => char.toLowerCase().charCodeAt(0)
 const compCharVals = (char1: string, char2: string): boolean => lowerCharVal(char1) < lowerCharVal(char2)
 
-export class NumbersCollection {
-	constructor(public data: number[]) {}
+export class NumbersCollection extends Sorter{
+	constructor(public data: number[]) {
+		super()
+	}
 
 	get length(): number {
 		return this.data.length

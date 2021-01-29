@@ -5,13 +5,13 @@ import {LinkedList} from "./LinkedList";
 
 let numList = [10, 3, -5, 0];
 const numCollection = new NumbersCollection(numList)
-const sorter = new Sorter(numCollection)
-sorter.sort()
+// const sorter = new Sorter(numCollection)
+// sorter.sort()
 
 let charList = Array.from("somethings")
 let testChars = "zyxbansmoke"
 let testCharCollection = new CharacterCollection(testChars)
-new Sorter(testCharCollection).sort()
+// new Sorter(testCharCollection).sort()
 
 // Linked list
 // const listItems = [1, 6, 34, 2, 78, 4, 8]
@@ -22,8 +22,9 @@ listItems.forEach(item => {
 	myList.add(item)
 })
 myList.print()
-let LLSorter = new Sorter(myList)
-LLSorter.sort()
+// let LLSorter = new Sorter(myList)
+// LLSorter.sort()
+myList.sort()
 myList.print()
 
 // class Sorter {
