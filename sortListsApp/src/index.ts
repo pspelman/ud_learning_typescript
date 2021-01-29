@@ -14,14 +14,13 @@ let testCharCollection = new CharacterCollection(testChars)
 new Sorter(testCharCollection).sort()
 
 // Linked list
-const listItems = [1, 6, 34, 2, 78, 4, 8]
+// const listItems = [1, 6, 34, 2, 78, 4, 8]
+const listItems = [500, -3, 4, -10]
+
 const myList = new LinkedList()
 listItems.forEach(item => {
-	console.log(`adding item: `, item)
 	myList.add(item)
-	console.log(`length: `, myList.length)
 })
-console.log(`node at 3: `, myList.at(3))
 myList.print()
 let LLSorter = new Sorter(myList)
 LLSorter.sort()

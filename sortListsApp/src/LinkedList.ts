@@ -44,6 +44,7 @@ export class LinkedList {
 		}
 		let node = this.head
 		if (search_idx === 0) {
+			console.log(`[pos: 0 | searchIdx: ${search_idx}] --> ${node.data}`, )
 			return node
 		}
 		let pointer = 0;
@@ -51,6 +52,7 @@ export class LinkedList {
 			node = node.next;
 			pointer++
 			if (pointer === search_idx) {
+				console.log(`[pos: ${pointer} | searchIdx: ${search_idx}] --> ${node.data}`, )
 				this.print()
 				return node
 			}
@@ -65,7 +67,6 @@ export class LinkedList {
 		return this.at(leftIdx).data > this.at(rightIdx).data
 	}
 
-
 	swap(leftIdx: number, rightIdx: number): void {
 		if (!this.head) {
 			throw new Error('empty list')
@@ -73,21 +74,34 @@ export class LinkedList {
 
 		let leftPointer, rightPointer, lagNode: Node
 		let count = 0
+		console.log(`trying to swap ${this.at(leftIdx).data} => ${this.at(rightIdx).data}`, )
 
-		rightPointer = this.head
-		leftPointer = rightPointer
-		lagNode = this.head
-		while (count < rightIdx && rightPointer.next) {
-			count++
-			lagNode = leftPointer
+		let temp: Node
+		if (leftIdx === 0 && this.head.next) {
+			console.log(`going to swap ${this.at(leftIdx).data} -> ${this.at(rightIdx).data}`,)
+			temp = this.head
+			this.head = this.head.next
+			temp.next = this.head.next
+			this.head.next = temp
+		} else {
+			rightPointer = this.head;
 			leftPointer = rightPointer
-			rightPointer = rightPointer.next
+			lagNode = this.head
+			while (count < rightIdx && rightPointer.next) {
+				count++
+				lagNode = leftPointer
+				leftPointer = rightPointer
+				rightPointer = rightPointer.next
+			}
+			console.log(`going to swap ${leftPointer.data} -> ${rightPointer.data}`,)
+			this.print()
+			leftPointer.next = rightPointer.next
+			rightPointer.next = leftPointer
+			lagNode.next = rightPointer
 		}
 		this.print()
-		leftPointer.next = rightPointer.next
-		rightPointer.next = leftPointer
-		lagNode.next = rightPointer
-		this.print()
+		console.log(`\n`)
+		// console.log(`current idx ${count} = rightIdx: ${rightIdx}`,)
 
 	}
 
@@ -100,7 +114,9 @@ export class LinkedList {
 		while (runner.next) {
 			runner = runner.next
 			printStr.push(runner.data)
+			// console.log(runner.data)
 		}
+		console.log(printStr.join(" -- "))
 	}
 
 
