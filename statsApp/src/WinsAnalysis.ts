@@ -16,7 +16,6 @@ export class WinsAnalysis implements Analyzer {
 			}
 		}
 		let results = `Team ${this.team} has ${wins} wins`;
-		console.log(results)
 		return results
 	}
 }

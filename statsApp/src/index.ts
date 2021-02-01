@@ -1,4 +1,3 @@
-// create object that satisfies a DataReader interface
 import {CsvFileReader} from "./CsvFileReader";
 import {MatchReader} from "./MatchReader";
 import {MatchResult} from "./MatchResult";
@@ -8,11 +7,16 @@ import {WinsAnalysis} from "./WinsAnalysis";
 import {Summary} from "./Summary";
 import {HtmlReport} from "./reportTargets/HtmlReport";
 
-const csvFileReader = new CsvFileReader('football.csv')
-
+// create object that satisfies a DataReader interface
 // create an instance of a match reader and pass in something that is a DataReader interface
+const csvFileReader = new CsvFileReader('football.csv')
 const matchReader = new MatchReader(csvFileReader)
 matchReader.load()
+
+const easyMatchReader = MatchReader.fromCsv('football.csv')
+
+
+
 
 
 
@@ -22,8 +26,12 @@ const MAN_UNITED = 'Man United'
 // const summary = new Summary(new WinsAnalysis(MAN_UNITED), new HtmlReport())
 // summary.buildAndPrintReport(matchReader.matches)
 
-const easySummary = Summary.winsAnalysisWithHtmlReport(MAN_UNITED)
-easySummary.buildAndPrintReport(matchReader.matches)
+// const easyHtmlSummary = Summary.winsAnalysisWithHtmlReport(MAN_UNITED)
+// easyHtmlSummary.buildAndPrintReport(matchReader.matches)
+
+const easySummary = Summary.winsAnalysisWithConsoleReport(MAN_UNITED)
+// easySummary.buildAndPrintReport(matchReader.matches)
+easySummary.buildAndPrintReport(easyMatchReader.matches)
 
 // new analysis
 // new report
