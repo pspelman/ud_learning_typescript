@@ -14,8 +14,7 @@ const matchReader = new MatchReader(csvFileReader)
 matchReader.load()
 
 const easyMatchReader = MatchReader.fromCsv('football.csv')
-
-
+easyMatchReader.load()
 
 
 
