@@ -1,22 +1,16 @@
-// create object that satisfies a DataReader interface
-import {CsvFileReader} from "./CsvFileReader";
-import {MatchReader} from "./MatchReader";
 import {MatchResult} from "./MatchResult";
-import {match} from "assert";
+import {MatchReader} from "./MatchReader";
 
-const csvFileReader = new CsvFileReader('football.csv')
-
-// create an instance of a match reader and pass in something that is a DataReader interface
-const matchReader = new MatchReader(csvFileReader)
-matchReader.load()
-
+const fileReader = new MatchReader('football.csv')
+fileReader.read()
+let matches = fileReader.data
 
 
 // console.log(matches)
 const MAN_UNITED = 'Man United'
 let wins = 0
 let team = MAN_UNITED
-for (let match of matchReader.matches) {
+for (let match of matches) {
 	// they were they home team, and the home team won or they were the away team and the away team won
 	if ((match[1] === team && match[5] === MatchResult.HomeWin) ||
 		(match[2] === team && match[5] === MatchResult.AwayWin)) {
